@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>AI Hub</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- add icon link -->
+    <link rel="icon" href="https://ai.pvssolution.com/static/img/logo_PVS_Hub_v4.png" />
+    <!-- Font awesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- jQuery js -->
+    <script src="https://ai.pvssolution.com/static/js/jquery-3.6.0.min.js"></script>
+
+    <!-- Jquery UI css file -->
+    <link href="https://ai.pvssolution.com/static/css/jquery-ui.min.css" rel="stylesheet">
+    </link>
+    <!-- DatetimePicker Jquery css -->
+    <link href="https://ai.pvssolution.com/static/css/jquery.datetimepicker.css" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://ai.pvssolution.com/static/css/bootstrap.min.css">
+    <!-- Auto complete -->
+    <link rel="stylesheet" href="https://ai.pvssolution.com/static/css/easy-autocomplete/easy-autocomplete.min.css">
+    <!-- SideBars CSS -->
+    <link href="https://ai.pvssolution.com/static/css/sidebars.css" rel="stylesheet">
+    <!-- Page style -->
+    <link href="https://ai.pvssolution.com/static/css/page-style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <div class="overflow-hidden visually-hidden-focusable">
+      <div class="container-xl">
+        <a href="#" class="d-inline-flex p-2 m-1">abc</a>
+        <a href="#" class="d-none d-md-inline-flex p-2 m-1">cdf</a>
+      </div>
+    </div> -->
+    <header class="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav class="container-fluid">
+            <a class="navbar-brand" href="#"><img
+                    src="https://ai.pvssolution.com/static/img/logo_PVS_Hub_width-white.png" width="100" height="30"
+                    alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Introduce</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+
+                </ul>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="color: white;font-size: larger;">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">nhi.tran@pvs.com.vn</a>
+                        <hr class="dropdown-divider">
+                        <a class="dropdown-item" href="/user/logout/">Log out</a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery js -->
+
+
+
+
+    <!-- Sub navbar -->
+
+    <nav class="navbar-light bg-light bd-subnavbar py-2">
+        <div class="container-fluid d-flex align-items-md-center">
+            <form class="me-auto search-navbar">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username"
+                        aria-describedby="button-search-navbar">
+                    <button class="btn btn-outline-warning" type="button" id="button-search-navbar">Search</button>
+                </div>
+            </form>
+
+            <button class="btn btn-light bd-sidebar-toggler ms-3" type="button" id="button-sidebar-toggler">
+                <i class="fas fa-arrows-alt-v"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <div class="p-3 bg-white" style="width: 100%;">
+        <h4>This is create ticket page</h4>
+
+        <!-- action="/hnk-ticket/hnk-ticket-create?menu=menu_hnk_support" 
+        method="post" -->
+        <form class="row g-3">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="r1rbk44uv3fcUzXzEJEkHdPWT8xEyYbLEVFGg8QkuGg8mqRP9QNxIZmfUeip51d3">
+            <!-- <div class="col-md-4">
+          <label for="ticket_id" class="form-label">Ticket Id</label>
+          <input type="text" class="form-control" id="ticket_id" disabled>
+          <span id="alert_ticket_id" style="color: red;font-size:15px"></span>
+          <small id="ticket_idHelp" class="form-text text-muted">Số yêu cầu nhận dạng, có thể dùng số thứ tự tăng dần, không trùng nhau.</small>
+        </div> -->
+            <div class="col-md-4">
+                <label for="service_type" class="form-label">Service Type</label>
+                <select id="service_type" class="form-select" name="service_type">
+                    <option selected>SR</option>
+                    <option>INC</option>
+                    <option>FB</option>
+                    <option>CP</option>
+                </select>
+                <small id="service_typeHelp" class="form-text text-muted">Loại yêu cầu ( INC: Sự cố | SR: Yêu cầu |
+                    FB: Phản hồi; | CP: Phàn nàn).</small>
+            </div>
+            <div class="col-md-4">
+                <label for="customer_id" class="form-label">Customer Id</label>
+                <input type="text" class="form-control" id="customer_id" name="customer_id">
+                <span id="alert_customer_id" style="color: red;font-size:15px"></span>
+                <small id="customer_idHelp" class="form-text text-muted">Số Id của Outlet</small>
+            </div>
+            <div class="col-md-4">
+                <label for="service_category" class="form-label">Service Category<span
+                        class="required-input">*</span></label>
+                <input type="text" class="form-control" id="service_category" name="service_category">
+                <span id="alert_service_category" style="color: red;font-size:15px"></span>
+                <small id="service_categoryHelp" class="form-text text-muted">Thể loại dịch vụ yêu cầu</small>
+            </div>
+            <div class="col-md-4">
+                <label for="priority" class="form-label">Priority</label>
+                <select id="priority" class="form-select" name="priority">
+                    <option selected>P5</option>
+                    <option>P4</option>
+                    <option>P3</option>
+                    <option>P2</option>
+                    <option>P1</option>
+                    <option>P0</option>
+                </select>
+                <small id="priorityHelp" class="form-text text-muted">Độ ưu tiên (P0: System down or Fatal bug | P1:
+                    Can't Login | P2: data | P3: Onsite Support or User Guide | P4: Active Account | P5: Reset
+                    Password + OTP or User issue from outlets or Complain + Feedback).</small>
+            </div>
+            <div class="col-md-4">
+                <label for="service_status" class="form-label">Service Status</label>
+                <select id="service_status" class="form-select" name="service_status">
+                    <option selected>Open</option>
+                    <option>In Progress</option>
+                    <option>Closed</option>
+                </select>
+                <small id="service_statusHelp" class="form-text text-muted">Trạng thái (Open: Đã tiếp nhận, chưa xử
+                    lý | In Progress: Đang xử lý | Closed: Đã hoàn thành).</small>
+            </div>
+            <div class="col-md-4">
+                <label for="service_description" class="form-label">Service Description<span
+                        class="required-input">*</span></label>
+                <input type="text" class="form-control" id="service_description" name="service_description">
+                <span id="alert_service_description" style="color: red;font-size:15px"></span>
+                <small id="service_descriptionHelp" class="form-text text-muted">Mô tả yêu cầu</small>
+            </div>
+            <div class="col-md-4">
+                <label for="request_by_channel" class="form-label">Request By Channel</label>
+                <select id="request_by_channel" class="form-select" name="request_by_channel">
+                    <option selected>Hotline</option>
+                    <option>Zalo</option>
+                    <option>Email</option>
+                    <option>Email Request</option>
+                    <option>Jira</option>
+                    <option>Market Visit</option>
+                </select>
+                <small id="request_by_channelHelp" class="form-text text-muted">Kênh tiếp nhận yêu cầu.</small>
+            </div>
+            <div class="col-md-4">
+                <label for="request_user" class="form-label">Request User</label>
+                <select id="request_user" class="form-select" name="request_user">
+                    <option selected>Sale Team</option>
+                    <option>Outlet</option>
+                    <option>B2B Team</option>
+                    <option>L1 Team</option>
+                    <option>Distributor</option>
+                    <option>Sub-Dist</option>
+                    <option>DDT Team</option>
+                </select>
+                <small id="request_userHelp" class="form-text text-muted">Tên người yêu cầu.</small>
+            </div>
+            <div class="col-md-4">
+                <label for="request_phone" class="form-label">Request User's Phone</label>
+                <input type="text" class="form-control" id="request_phone" name="request_phone">
+                <span id="alert_request_phone" style="color: red;font-size:15px"></span>
+                <small id="request_phoneHelp" class="form-text text-muted">Số điện thoại của người gọi.</small>
+            </div>
+            <div class="col-md-4">
+                <label for="support_team" class="form-label">Support Team</label>
+                <select id="support_team" class="form-select" name="support_team">
+                    <option selected>L1</option>
+                    <option>GlassRun</option>
+
+                </select>
+                <small id="support_teamHelp" class="form-text text-muted">Tên nhóm của người xử lý yêu cầu.</small>
+            </div>
+            <div class="col-md-4">
+                <label for="issue_type" class="form-label">Issue Type</label>
+                <select id="issue_type" class="form-select" name="issue_type">
+                    <option selected></option>
+                    <option>Bug</option>
+                    <option>Feature</option>
+                    <option>Spike</option>
+                    <option>Story</option>
+                    <option>Task</option>
+                </select>
+                <small id="issue_typeHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="col-md-4">
+                <label for="province" class="form-label">Province<span class="required-input">*</span></label>
+                <input type="text" class="form-control" id="province" name="province">
+                <span id="alert_province" style="color: red;font-size:15px"></span>
+                <small id="provinceHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="col-md-4">
+                <label for="no_escalation" class="form-label">No Escalation</label>
+                <input type="text" class="form-control" id="no_escalation" name="no_escalation">
+                <span id="alert_no_escalation" style="color: red;font-size:15px"></span>
+                <small id="no_escalationHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="col-md-4">
+                <label for="escalation_to" class="form-label">Escalation To</label>
+                <input type="text" class="form-control" id="escalation_to" name="escaltion_to">
+                <span id="alert_escalation_to" style="color: red;font-size:15px"></span>
+                <small id="escalation_toHelp" class="form-text text-muted"></small>
+            </div>
+
+            <div class="col-md-4">
+                <label for="sla" class="form-label">SLA</label>
+                <input type="text" class="form-control" id="sla" name="sla">
+                <span id="alert_sla" style="color: red;font-size:15px"></span>
+                <small id="slaHelp" class="form-text text-muted">Cam kết dịch vụ (Tùy mỗi tổ chức sẽ định nghĩa
+                    tương ứng với Priority sẽ có 1 mức cam kết dịch vụ khác nhau).</small>
+            </div>
+            <div class="col-md-4">
+                <label for="document" class="form-label">Document</label>
+                <input type="text" class="form-control" id="document" name="document">
+                <span id="alert_document" style="color: red;font-size:15px"></span>
+                <small id="documentHelp" class="form-text text-muted">Đánh (x) nếu yêu cầu này có viết tài liệu
+                    hướng dẫn FAQ tái sử dụng cho lần sau.</small>
+            </div>
+            <div class="col-md-4">
+                <label for="document_code" class="form-label">Document Code</label>
+                <input type="text" class="form-control" id="document_code" name="document_code">
+                <span id="alert_document_code" style="color: red;font-size:15px"></span>
+                <small id="document_codeHelp" class="form-text text-muted">Mã tài liệu FAQ</small>
+            </div>
+            <div class="col-4">
+                <label for="comment" class="form-label">Comment</label>
+                <input type="text" class="form-control" id="comment" name="comment">
+                <span id="alert_comment" style="color: red;font-size:15px"></span>
+                <small id="commentHelp" class="form-text text-muted">Ghi chú</small>
+            </div>
+
+            <div class="col-12">
+                <button type="button" class="btn btn-warning" id="create-bt">Create</button>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="https://ai.pvssolution.com/static/js/easy-autocomplete/jquery.easy-autocomplete.min.js"></script>
+    <script src="https://ai.pvssolution.com/static/js/hnk_data/hnk_data_service_category.js"></script>
+    <script src="https://ai.pvssolution.com/static/js/hnk_data/hnk_data_province.js"></script>
+    <script>
+        $(document).ready(function () {
+            // auto complete service category
+            var options_service_category = {
+                data: data_service_category,
+                getValue: "service_category",
+                list: {
+                    match: {
+                        enabled: true
+                    },
+                    onSelectItemEvent: function () {
+                        var value = $("#service_category").getSelectedItemData().service_description;
+                        var priority = $("#service_category").getSelectedItemData().priority;
+                        $("#service_description").val(value).trigger("change");
+                        $("#priority").val(priority).trigger("change");
+                    }
+                }
+            };
+            $("#service_category").easyAutocomplete(options_service_category);
+
+            // auto complte province
+            var options_province = {
+
+                data: data_province,
+
+                getValue: "name",
+
+                list: {
+                    match: {
+                        enabled: true
+                    }
+                },
+            };
+
+            $("#province").easyAutocomplete(options_province);
+
+            // submit update form
+            $("#create-bt").click(function () {
+                var service_category = $("#service_category").val();
+                var service_description = $("#service_description").val();
+                var valid = true;
+
+                if (service_category === "") {
+                    $("#alert_service_category").text("Invalid input!");
+                    valid &= false;
+                } else {
+                    $("#alert_service_category").text("");
+                }
+                if (service_description === "") {
+                    $("#alert_service_description").text("");
+                    valid &= false;
+                } else {
+                    $("#alert_service_description").text("");
+                }
+
+                if (valid) {
+                    $(this).prop("disabled", true);
+                    $("#delete_bt").prop("disabled", true);
+                    // $("form").submit();
+                    console.log("Submitted successfully")
+                }
+            }); // end click
+
+
+
+
+        }); // end ready
+    </script>
+
+
+
+    </div>
+
+
+    <script src="https://ai.pvssolution.com/static/js/button-sidebar-toggler.js"></script>
+
+    <!-- Bootstrap 5 js -->
+    <script src="https://ai.pvssolution.com/static/js/bootstrap.bundle.min.js"></script>
+    <!-- Jquery UI js file -->
+    <script src="https://ai.pvssolution.com/static/js/jquery-ui.min.js"></script>
+    <!-- DatetimePicker js file -->
+    <script src="https://ai.pvssolution.com/static/js/jquery.datetimepicker.full.min.js"></script>
+    <!-- SideBars BS5 -->
+    <script src="https://ai.pvssolution.com/static/js/sidebars.js"></script>
+</body>
+
+</html>
